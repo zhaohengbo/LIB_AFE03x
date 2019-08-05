@@ -98,21 +98,21 @@ typedef struct
 #endif  
 
   UINT16 timer01ShotFlag;    //  25 Timer 0 cfg flags
-  HAL_cbFunc_t cb_p;
-  UINT32 cb_param;
-  Uint32 rxDmaTime;          // RX DMA time (in 10us)
-  Uint32 zcaTime;             // Zero-crossing time (in 10us)
-  Uint32 zcaLatency;          // Zero-crossing latency (in CPU ticks)
-  Uint32 zcaCap1;             // Zero-crossing captured (in CPU ticks)
-  Uint32 zcbTime;             // Zero-crossing time (in 10us)
-  Uint32 zcbLatency;          // Zero-crossing latency (in CPU ticks)
-  Uint32 zcbCap1;             // Zero-crossing captured (in CPU ticks)
+  HAL_cbFunc_t cb_p;		 // 26 27
+  UINT32 cb_param;			 // 28 29
+  Uint32 rxDmaTime;          // 30 31 RX DMA time (in 10us)
+  Uint32 zcaTime;             // 32 33 Zero-crossing time (in 10us)
+  Uint32 zcaLatency;          // 34 35 Zero-crossing latency (in CPU ticks)
+  Uint32 zcaCap1;             // 36 37 Zero-crossing captured (in CPU ticks)
+  Uint32 zcbTime;             // 38 39 Zero-crossing time (in 10us)
+  Uint32 zcbLatency;          // 40 41 Zero-crossing latency (in CPU ticks)
+  Uint32 zcbCap1;             // 42 43 Zero-crossing captured (in CPU ticks)
 
-  BOARD_REV_t boardRev;		// board revision ID
+  BOARD_REV_t boardRev;		// 44 board revision ID
 
-  HAL_afe_prfParms_t prf;
+  HAL_afe_prfParms_t prf;   // 45 46 47 48
 
-  Uint32 t0Prd;               // T0 period in us (Q1)
+  Uint32 t0Prd;               // 50 51 T0 period in us (Q1)
 }HAL_afe_handle_t;
 
 /******************************************************************************

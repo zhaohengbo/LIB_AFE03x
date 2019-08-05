@@ -1,4 +1,4 @@
-#include "afe031_config.h"
+#include "hal_afe031.h"
 #include "F28x_Project.h"
 
 /* RX Gain LUT */
