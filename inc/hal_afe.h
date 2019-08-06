@@ -104,10 +104,10 @@ typedef struct
 /* AFE TX set parameters */
 typedef struct
 {
-  SINT16 *txBuf_p;            // Pointer to the TX buffer
-  UINT16 txSize;             // Size of TX buffer
-  UINT32 t0PrdInUs;          // CPU timer 0 period (in us)
-  UINT16 t0Flags;            // bit 0: CPU timer 0 interrupt enabled (1) or disabled (1)
+  SINT16 *txBuf_p;            // 0 1 Pointer to the TX buffer
+  UINT16 txSize;             // 2 3 Size of TX buffer
+  UINT32 t0PrdInUs;          // 4 5 CPU timer 0 period (in us)
+  UINT16 t0Flags;            // 6 7 bit 0: CPU timer 0 interrupt enabled (1) or disabled (0)
                              // bit 1: 1 shot = 1, 0 = continuous
                              // This is enabled for txTime timeout, but disabled for TX DMA
   HAL_cbFunc_t cb_p;
