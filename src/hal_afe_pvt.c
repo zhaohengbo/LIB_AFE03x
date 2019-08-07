@@ -1,7 +1,25 @@
 #include "F28x_Project.h"
 #include "hal_afe_pvt.h"
 
-HAL_status_t HAL_afe_rxStart(void *setParms);
+HAL_status_t HAL_afe_rxStart(void *setParms)
+{
+	HAL_afe_rxSetParms_t *para = (HAL_afe_rxSetParms_t *)setParms;
+	UINT16 dstBufIdx0,dstBufIdx1;
+	HAL_afe031_rxEnable();
+	dstBufIdx0 = para->dstBufIdx;
+	dstBufIdx1 = (dstBufIdx0 + 1) & 0x1;
+	HAL_afe_handle_s.rxBufIdx = dstBufIdx0;
+	HAL_afe_handle_s.rxBufPtr_p[dstBufIdx0] = para->dstBufAddr[dstBufIdx0];
+	HAL_afe_handle_s.rxBufPtr_p[dstBufIdx1] = para->dstBufAddr[dstBufIdx1];
+	HAL_afe_handle_s.rxBufSize[dstBufIdx0] = para->size[dstBufIdx0];
+	HAL_afe_handle_s.rxBufSize[dstBufIdx1] = para->size[dstBufIdx1];
+	HAL_afe_handle_s.rxBufDat_p = HAL_afe_handle_s.rxBufPtr_p[dstBufIdx0];
+	HAL_afe_handle_s.activeBufIdx = dstBufIdx0;
+	HAL_afe_handle_s.activeBufSize = para->size[dstBufIdx0];
+	HAL_afe_handle_s.adcCnt = 0;
+	HAL_afe_adcStart();
+	return HAL_STAT_SUCCESS;
+}
 
 HAL_status_t HAL_afe_rxStop(void *setParms)
 {
@@ -9,7 +27,19 @@ HAL_status_t HAL_afe_rxStop(void *setParms)
 	return HAL_STAT_SUCCESS;
 }
 
-HAL_status_t HAL_afe_rxReCfg(void *setParms);
+HAL_status_t HAL_afe_rxReCfg(void *setParms)
+{
+	HAL_afe_rxSetParms_t *para = (HAL_afe_rxSetParms_t *)setParms;
+	UINT16 dstBufIdx0,dstBufIdx1;
+	dstBufIdx0 = para->dstBufIdx;
+	dstBufIdx1 = (dstBufIdx0 + 1) & 0x1;
+	HAL_afe_handle_s.rxBufIdx = dstBufIdx0;
+	HAL_afe_handle_s.rxBufPtr_p[dstBufIdx0] = para->dstBufAddr[dstBufIdx0];
+	HAL_afe_handle_s.rxBufPtr_p[dstBufIdx1] = para->dstBufAddr[dstBufIdx1];
+	HAL_afe_handle_s.rxBufSize[dstBufIdx0] = para->size[dstBufIdx0];
+	HAL_afe_handle_s.rxBufSize[dstBufIdx1] = para->size[dstBufIdx1];
+	return HAL_STAT_SUCCESS;
+}
 
 HAL_status_t HAL_afe_setGain(void *setParms)
 {

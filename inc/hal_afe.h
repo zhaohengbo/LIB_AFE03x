@@ -89,9 +89,9 @@ typedef enum
 /* AFE RX set parameters */
 typedef struct
 {
-  UINT16 size[2];            // Sizes of RX ping-pong buffers
-  UINT16 *dstBufAddr[2];     // DMA desination ping-pong buffer addresses
-  UINT16 dstBufIdx;          // Destination buffer index. Always point to the readable buffer
+  UINT16 size[2];            // 0 1 Sizes of RX ping-pong buffers
+  UINT16 *dstBufAddr[2];     // 2 3 4 5 DMA desination ping-pong buffer addresses
+  UINT16 dstBufIdx;          // 6 7 Destination buffer index. Always point to the readable buffer
 }HAL_afe_rxSetParms_t;
 
 /* AFE ADC offset adjust parameters */
