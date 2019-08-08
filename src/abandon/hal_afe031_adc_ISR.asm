@@ -17,7 +17,7 @@ _HAL_afe_adc_isr:
 	MOVW    DP, #0x33
 	MOV     @0x21, #0x0001
 	MOVW    DP, #0x1c4
-	OR      @0x19, #0x0010
+	OR      @0x19, #0x0010;Seems to be wrong!
 	MOVL    XAR4, #_HAL_afe_handle_s.updateGainFlag
 	MOVL    XAR5, #0x000b00
 	MOVL    XAR1, *+XAR4[6]

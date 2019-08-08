@@ -1,4 +1,4 @@
-# LIB_AFE03x[Working in progress]
+# LIB_AFE03x[testing]
  This is an unofficial library for TI AFE03x, based on the Reverse-Engineering of some G3/PRIME Lib.
  
  TI has stopped supporting for OFDM PLC Modem anymore, so we have to develop it ourselves.

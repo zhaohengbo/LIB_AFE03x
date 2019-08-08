@@ -16,7 +16,7 @@ _HAL_afe_cpuTimer0_isr:
 	MOVL    XAR3, ACC
 	NEG     ACC
 	MOVL    XAR1, ACC
-	MOVL    XAR4, #_HAL_afe_handle_s+0x12
+	MOVL    XAR4, #_HAL_afe_handle_s+0x12;18
 	INC     *+XAR4[5]
 	MOV     AL, *+XAR4[7]
 	SBF     LPEND, NEQ
@@ -32,8 +32,8 @@ _HAL_afe_cpuTimer0_isr:
 	MINL    ACC, XAR3
 	MAXL    ACC, P
 	ADD     ACC, #32768
-	MOV     DP, #0x1dd
-	MOV     @0x8, AL
+	MOV     DP, #0x1dd;Warning:This SPIB,not SPIA!!!!
+	MOV     @0x8, AL;Warning:must be the same as that in hal_spi.c
 	MOV     AL, *+XAR4[6]
 	INC     *+XAR4[4]
 	CMP     AL, *+XAR4[4]
